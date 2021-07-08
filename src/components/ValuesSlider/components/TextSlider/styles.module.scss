@@ -1,0 +1,79 @@
+@import "src/styles/vars";
+
+.wrapper {
+
+}
+
+.slider {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  position: relative;
+}
+
+.textItem {
+  font-size: 18px;
+  font-weight: 300;
+  line-height: 1.4rem;
+  color: $text;
+  margin-right: 15px;
+  width: 33%;
+  position: relative;
+  padding-left: 40px;
+
+  span {
+    font-size: 40px;
+    font-weight: 300;
+    line-height: 2.5rem;
+    color: $primary;
+    position: absolute;
+    left: 0;
+    top: 5px;
+
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 400;
+  font-family: $primary-font;
+  line-height: 2rem;
+  color: $primary;
+}
+
+.slideArrow {
+  width: 45px;
+  height: 45px;
+  background-color: white;
+  border: none;
+  position: absolute;
+}
+
+.slideArrow:before {
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  border-left: 2px solid $arrow;
+  border-bottom: 2px solid $arrow;
+  transform-origin: 100% 0;
+  transform: rotate(45deg);
+}
+
+.slidePrev {
+  left: 0;
+  margin-top: 95px;
+  margin-left: -70px;
+}
+
+.slideNext {
+  position: absolute;
+  right: 0;
+  transform: rotate(180deg);
+  margin-top: 55px;
+  margin-right: -70px;
+}
+
+
+
+

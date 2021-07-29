@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -8,7 +8,7 @@ import img1 from 'img/slider1.jpg'
 import img2 from 'img/slider2.jpg'
 import img3 from 'img/slider3.jpg'
 
-export default function ImageSlider({setImageSlider}) {
+export default function ImageSlider({imageSliderRef}) {
 
     const settings = {
         infinite: true,
@@ -19,7 +19,7 @@ export default function ImageSlider({setImageSlider}) {
 
     return (
         <>
-            <Slider {...settings} ref={c => setImageSlider(c)}>
+            <Slider {...settings} ref={imageSliderRef}>
                 <div>
                     <div className={styles.imageSlider} style={{backgroundImage: `url(${img1})`}}/>
                 </div>

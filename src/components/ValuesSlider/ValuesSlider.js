@@ -13,11 +13,15 @@ import styles from './styles.module.scss'
 
 export default function ValuesSlider() {
 
+    const [isActivePrevBtn, setIsActivePrevBtn] = useState(false)
+    const [isActiveNextBtn, setIsActiveNextBtn] = useState(true)
+
     const imageSliderRef = useRef(null)
     const textSliderRef = useRef(null)
+    debugger
 
     const imageSliderSettings = {
-        infinite: true,
+        infinite: false,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
@@ -26,6 +30,18 @@ export default function ValuesSlider() {
                 textSliderRef.current.slickNext()
             }else {
                 textSliderRef.current.slickPrev()
+            }
+        },
+        beforeChange: (currentIndex, nextIndex) => {
+            if (nextIndex === 0) {
+                setIsActivePrevBtn(false)
+            }else {
+                setIsActivePrevBtn(true)
+            }
+            if (nextIndex === fadeItems.length - 1) {
+                setIsActiveNextBtn(false)
+            }else {
+                setIsActiveNextBtn(true)
             }
         }
 
@@ -88,6 +104,7 @@ export default function ValuesSlider() {
 
     const textSliderSettings = {
         fade: true,
+        infinite: false,
         speed: 500,
         arrows: false,
     };
@@ -100,7 +117,9 @@ export default function ValuesSlider() {
     const toNext = useCallback(() => {
         textSliderRef.current.slickNext()
         imageSliderRef.current.slickNext()
+
     }, [textSliderRef, imageSliderRef])
+
 
 
     return (
@@ -118,8 +137,8 @@ export default function ValuesSlider() {
             </Slider>
             <div className={styles.wrapper}>
                 <Container>
-                    <div className={classNames(styles.slidePrev, styles.slideArrow)} onClick={toPrev}/>
-                    <div className={classNames(styles.slideNext, styles.slideArrow)} onClick={toNext}/>
+                    <div className={classNames(styles.slidePrev, styles.slideArrow, {[styles.active]:isActivePrevBtn})} onClick={toPrev}/>
+                    <div className={classNames(styles.slideNext, styles.slideArrow, {[styles.active]:isActiveNextBtn})} onClick={toNext}/>
                     <div className={styles.title}>Our values:</div>
                     <Slider className={styles.slider} {...textSliderSettings} ref={textSliderRef}>
                         {fadeItems.map((items, idx) => {

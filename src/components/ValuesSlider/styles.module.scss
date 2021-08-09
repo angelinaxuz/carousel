@@ -1,16 +1,11 @@
 @import "src/styles/vars";
 
-.imageSlider{
+.imageSlider {
   background-size: cover;
   height: 990px;
   background-repeat: no-repeat;
   background-position: bottom;
   margin-bottom: 3px;
-}
-
-
-.wrapper {
-
 }
 
 .slider {
@@ -25,7 +20,7 @@
   justify-content: space-between;
 }
 
-.sliderInnerLast{
+.sliderInnerLast {
   justify-content: right;
 }
 
@@ -66,18 +61,23 @@
   background-color: white;
   border: none;
   position: absolute;
-}
 
-.slideArrow:before {
-  content: "";
-  position: absolute;
-  height: 20px;
-  width: 20px;
-  border-left: 2px solid $arrow;
-  border-bottom: 2px solid $arrow;
-  transform-origin: 100% 0;
-  transform: rotate(45deg);
-  cursor: pointer;
+  &:before {
+    content: "";
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    border-left: 2px solid $arrow;
+    border-bottom: 2px solid $arrow;
+    transform-origin: 100% 0;
+    transform: rotate(45deg);
+    cursor: pointer;
+  }
+
+  &.active:before {
+    border-left: 2px solid $primary;
+    border-bottom: 2px solid $primary;
+  }
 }
 
 .slidePrev {
@@ -91,6 +91,8 @@
   top: 55px;
   right: 15px;
 }
+
+
 
 
 
